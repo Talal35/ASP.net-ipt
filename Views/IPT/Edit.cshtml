@@ -1,0 +1,182 @@
+﻿@model IPT1.Models.Applicant
+
+@{
+    ViewData["Title"] = "Create";
+}
+@* 
+<h1>Create</h1>
+
+<h4>Applicant</h4>
+<hr />
+*@
+
+<div class="col-11 mx-auto pt-0 p-0">
+     <div class="card">
+         <div class="card-header bg-primary text-uppercase text-white" style="height:45px;">
+<h4>Edit Applicant</h4>
+</div>
+
+
+
+        @* <form enctype = "multipart/form-data" asp-action=" Create">*@
+           <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+
+
+
+        <div class="row">
+    <div class="col-md-6">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            </div>
+
+
+
+            <div class="col-md-6">
+                <div class="form_group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            </div>
+
+
+
+             <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            </div>
+
+
+
+                <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Job_Status" class="control-label"></label>
+                <input asp-for="Job_Status" class="form-control" />
+                <span asp-validation-for="Job_Status" class="text-danger"></span>
+            </div>
+            </div>
+
+                <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="work_per_hour" class="control-label"></label>
+                <input asp-for="work_per_hour" class="form-control" />
+                <span asp-validation-for="work_per_hour" class="text-danger"></span>
+            </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="col-md-12">
+            <table  class="table table-striped">
+                
+                   
+                        <th>
+                            CompanyName
+                         </th>
+                     
+                        <th>
+                            Designation
+                        </th>
+                        <th>
+                            Year Worked
+                        </th>
+                       
+           
+                    
+                </thead>
+
+
+
+                <tbody>
+                    @*@foreach (var item in Model.Experiences)*@
+                   @for(int i=0 ; i<Model.Experiences.Count;i++)
+                    {
+                        <tr>
+                            <td>
+                                @Html.EditorFor(x => x.Experiences[i].CompanyName, new{htmlAttribues = new {@class= "form-control"}})
+                               @*@ <input asp-for="@item.CompanyName" class="form-control" />*@
+                            </td>
+                            <td>
+                                @Html.EditorFor(x => x.Experiences[i].Designation, new{htmlAttribues = new {@class= "form-control"}})
+                               @* <input asp-for="@item.Designation" class="form-control" />*@
+                            </td>
+                             <td>
+                                @Html.EditorFor(x => x.Experiences[i].YearsWorked, new{htmlAttribues = new {@class= "form-control"}})
+                               @* <input asp-for="@item.Designation" class="form-control" />*@
+                            </td>
+                       @*    <td>
+                               <button id="btnadd" type="button" class="btn btn-sm btn-secondary visible"> Add</button>
+                               <button id="btnadd" type="button" class="btn btn-sm btn-secondary invisible"> Delete</button>
+                           </td>
+                           *@
+
+                        </tr>
+                    }
+
+                </tbody>
+
+                </table>
+                    
+                </div>
+
+
+
+
+
+
+                <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Wage" class="control-label"></label>
+                <input asp-for="Wage" class="form-control" />
+                <span asp-validation-for="Wage" class="text-danger"></span>
+            </div>
+            </div>
+
+
+                <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="TotalExperience" class="control-label"></label>
+                <input asp-for="TotalExperience" class="form-control" />
+                <span asp-validation-for="TotalExperience" class="text-danger"></span>
+            </div>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+          
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+   
+
+
+
+
+
+}
